@@ -1,6 +1,6 @@
 page {
     includeCSS {
-        theme = EXT:t3_beluga/Resources/Public/Less/Theme/theme.less
+        theme = EXT:t3_beluga/Resources/Public/Less/theme.less
     }
 }
 
