@@ -1,0 +1,36 @@
+page {
+    includeCSS {
+        theme = EXT:t3_beluga/Resources/Public/Less/Theme/theme.less
+    }
+}
+
+
+lib.navigation.page < lib.navigation.main
+lib.navigation.page {
+    10 {
+        special = directory
+        special.value = 
+        1 {
+            wrap = <div class="blogposts-wrapper"><ul class="blogposts no-list-style">|</ul></div>
+            NO {
+                wrapItemAndSub = <li class="blogpost {page:subtitle}">|</li>
+                wrapItemAndSub.insertData=1
+            }
+        }
+    }
+}
+
+lib.search = TEXT
+lib.search.value (
+
+<div class="searchbox">
+    <div class="input-group input-group-sm">
+        <form class="form-searchbox" autocomplete="off" methjo="post" action="recherche/">
+            <input class="form-control" type="text" placeholder="Rechercher..." name="tx_indexedsearch[sword]" required />
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+           </span>
+        </form>
+    </div>
+</div>
+)

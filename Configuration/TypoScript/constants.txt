@@ -1,0 +1,7 @@
+page {
+	fluidtemplate {
+		layoutRootPath = EXT:t3_beluga/Resources/Private/Layouts/Page/
+		templateRootPath = EXT:t3_beluga/Resources/Private/Templates/Page/
+		partialRootPath = EXT:t3_beluga/Resources/Private/Partials/Page/
+	}
+}
