@@ -10,7 +10,7 @@
             </trans-unit>
 
             <trans-unit id="pages.size">
-                <source>Columns</source>
+                <source>Taille</source>
             </trans-unit>
             <trans-unit id="pages.size.large">
                 <source>Large</source>
@@ -20,6 +20,9 @@
             </trans-unit>
             <trans-unit id="pages.size.small">
                 <source>Small</source>
+            </trans-unit>
+            <trans-unit id="pages.size.contenant">
+                <source>Contenant</source>
             </trans-unit>
 
             <trans-unit id="pages.color">
@@ -40,7 +43,7 @@
             <trans-unit id="pages.color.blue">
                 <source>Blue</source>
             </trans-unit>
-            <trans-unit id="pages.color.color-white">
+            <trans-unit id="pages.color.white">
                 <source>White</source>
             </trans-unit>
             <trans-unit id="pages.color.gray">
@@ -49,7 +52,7 @@
             <trans-unit id="pages.color.lite">
                 <source>Lite</source>
             </trans-unit>
-            
+
             <trans-unit id="pages.image">
                   <source>Image</source>
             </trans-unit>
@@ -57,3 +60,4 @@
             </body>
     </file>
 </xliff>
+
