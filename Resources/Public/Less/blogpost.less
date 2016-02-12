@@ -1048,14 +1048,12 @@ select {
 	}
 	#main-nav-check {
 		&:checked {
-			~ {
-				.mm-page {
-					left: 280px;
-					position: relative;
-					top: 0;
-					opacity: 0.6;
-				}
-			}
+            .mm-page {
+                left: 280px;
+                position: relative;
+                top: 0;
+                opacity: 0.6;
+            }
 		}
 	}
 	.sb-search {
@@ -3739,7 +3737,7 @@ body.high_contrast {
 	position: relative;
 	z-index: 1;
 	color: @color_6;
-	&:after {
+	/*&:after {
 		pointer-events: none;
 		position: absolute;
 		width: 100%;
@@ -3747,7 +3745,7 @@ body.high_contrast {
 		-webkit-box-sizing: content-box;
 		-moz-box-sizing: content-box;
 		box-sizing: content-box;
-	}
+	}*/
 	&:before {
 		content: url(/extension/yosemite_custom/design/www/images/home/paiement.png);
 		speak: none;
