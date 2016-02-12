@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T09:11:39Z"
+          product-name="t3_beluga">
+        <header/>
+        <body>
+
+            <trans-unit id="theme_name">
+                <source>t3_beluga</source>
+            </trans-unit>
+
+            <trans-unit id="pages.size">
+                <source>Columns</source>
+            </trans-unit>
+            <trans-unit id="pages.size.large">
+                <source>Large</source>
+            </trans-unit>
+            <trans-unit id="pages.size.normal">
+                <source>Normal</source>
+            </trans-unit>
+            <trans-unit id="pages.size.small">
+                <source>Small</source>
+            </trans-unit>
+
+            <trans-unit id="pages.color">
+                <source>Color</source>
+            </trans-unit>
+            <trans-unit id="pages.color.cyan">
+                <source>Cyan</source>
+            </trans-unit>
+            <trans-unit id="pages.color.yellow">
+                <source>Yellow</source>
+            </trans-unit>
+            <trans-unit id="pages.color.greenlight">
+                <source>Greenlight</source>
+            </trans-unit>
+            <trans-unit id="pages.color.red">
+                <source>Red</source>
+            </trans-unit>
+            <trans-unit id="pages.color.blue">
+                <source>Blue</source>
+            </trans-unit>
+            <trans-unit id="pages.color.color-white">
+                <source>White</source>
+            </trans-unit>
+            <trans-unit id="pages.color.gray">
+                <source>Gray</source>
+            </trans-unit>
+            <trans-unit id="pages.color.lite">
+                <source>Lite</source>
+            </trans-unit>
+            
+            <trans-unit id="pages.image">
+                  <source>Image</source>
+            </trans-unit>
+
+            </body>
+    </file>
+</xliff>
