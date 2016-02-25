@@ -1,36 +1,274 @@
 page {
+    includeCSSLibs {
+        awesomefont = https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css
+        awesomefont.external = 1
+    }
     includeCSS {
         theme = EXT:t3_beluga/Resources/Public/Less/theme.less
+        bootstrap = EXT:bootstrap_package/Resources/Public/Less/Bootstrap/bootstrap.less
+        theme >
+        tout = /fileadmin/user_upload/tout.css
+        all = /fileadmin/user_upload/all.css
+        thumbnail = /fileadmin/user_upload/thumnail.css
+        search = /fileadmin/user_upload/search.css
+    }
+    includeJSFooterlibs {
+        menuresp = EXT:t3_beluga/Resources/Public/JavaScript/Libs/menu.js
+        uisearch = EXT:t3_beluga/Resources/Public/JavaScript/Libs/uisearch.js
+        classie = EXT:t3_beluga/Resources/Public/JavaScript/Libs/classie.js
     }
 }
 
-
+#######################
+### NAVIGATION MAIN ###
+#######################
+lib.navigation.main {
+  10 {
+    entryLevel = 0
+    1 {
+      wrap = <ul id="main_nav"><li class ="active"><a href="/"><i class="fa fa-home fa-2x"></i></a></li>|</ul>
+      NO {
+        wrapItemAndSub = <li>|</li>
+      }
+      CUR
+      CURIFSUB >
+      CURIFSUB{
+        wrapItemAndSub = <li class"active">|</li>
+      }
+      ACT >
+      ACT < .NO
+      IFSUB >
+      IFSUB < .NO
+      ACTIFSUB >
+      ACTIFSUB < .NO
+    }
+    2 >
+    3 >
+  }
+}
+###################
+#### MENU PAGE ####
+###################
 lib.navigation.page < lib.navigation.main
 lib.navigation.page {
     10 {
         special = directory
-        special.value = 
+        special.value = 122
         1 {
             wrap = <div class="blogposts-wrapper"><ul class="blogposts no-list-style">|</ul></div>
             NO {
-                wrapItemAndSub = <li class="blogpost {page:subtitle}">|</li>
+                linkWrap >
+                #wrapItemAndSub.override.cObject.10 >
+                wrapItemAndSub.stdWrap.cObject = CASE
+                wrapItemAndSub.stdWrap.cObject {
+                    key.field = t3_beluga_type
+ 
+                    default = TEXT
+                    default {
+
+                        override.cObject = COA
+                        override.cObject {
+                            10 = TEXT
+                            10.value = <li class="blogpost blogpost-
+                          
+                            20 = TEXT
+                            20 {
+                                table = pages
+                                stdWrap.if.isTrue.field = media
+                                value = with-img
+                            }
+
+                 
+                            30 = TEXT
+                            30 {
+                                table = pages
+                                stdWrap.if.isFalse.field = media
+                                value = no-img
+                            }     
+                            40 = TEXT
+                            40.value (
+                                w25 xs-w100 sm-w50 
+                            )
+                      
+                            50 = TEXT
+                            50.value =  {field:t3_beluga_color}">|</li>
+                            noTrimWrap = 1
+                        }
+                    }
+
+                    small < .default
+                    small {
+                        override.cObject{
+                            10.value = <li class="mini-blogspost 
+                            20 >
+                            30 >
+                            40.value (
+                                w50 xs-w33 sm-w100 
+                            )
+                        }
+                    }
+
+                    large < .default
+                    large {
+                        override.cObject.40.value (
+                            w75 xs-w100 sm-w100 
+                        )
+                    }
+                }
+
+                doNotLinkIt = 1
+                stdWrap.cObject = CASE
+                stdWrap.cObject {
+                    key.field = t3_beluga_type
+
+                    default = TEXT
+                    default{
+                        typolink.parameter.field = uid
+                        stdWrap.htmlSpecialChars = 0
+                        typolink.ATagParams.dataWrap = class="blocked"
+
+                        innerWrap.cObject = COA
+                        innerWrap.cObject {
+
+                            10 = FILES
+                            10 {
+                                # Get the images related to the current page
+                                references {
+                                    table = pages
+                                    fieldName = media
+                                    file.treatIdAsReference = 1
+                                }
+                                # Render each image and wrap it as appropriate
+                                renderObj = TEXT
+                                renderObj {
+                                    typolink {
+                                        parameter.data = file:current:publicUrl
+                                        forceAbsoluteUrl = 1
+                                        returnLast = url
+                                    }
+                                    wrap = |,
+                                }
+                                stdWrap {
+                                    # Take only the first image if several are defined
+                                    listNum = 0
+                                    wrap = <img src="|" title="image" class="blogpost-img img-responsive" width="300" height="300"/>
+                                    required = 1
+                                }
+                            }
+                            20 = TEXT
+                            20 {
+                                value.field = title
+                                stdWrap.wrap = <div class="ratio-wrapper"><div class="content ratioed"><span class="headline">|</span></div></div>
+                            }
+                        }
+                    }
+
+                    large < .default
+                    large {
+                        typolink.ATagParams.dataWrap = class="blocked ratio-wrapper"
+                    }
+                }
                 wrapItemAndSub.insertData=1
             }
+            ACT >
+            ACT < .NO
+            IFSUB >
+            IFSUB < .NO
+            IFSUB.doNotShowLink = 1
+
+            ACTIFSUB >
+            ACTIFSUB < .IFSUB
+        }
+        2 < .1
+        2 {
+            wrap = <ul class="mini-blogsposts">|</ul>
         }
     }
 }
+#####################
+#### FOOTER_MENU ####
+#####################
+lib.footer_menu < plugin.tx_msfootermenu_pi1
 
-lib.search = TEXT
-lib.search.value (
+#####################
+#### CTYPE: MENU ####
+#####################
+tt_content.menu.20 {
 
-<div class="searchbox">
-    <div class="input-group input-group-sm">
-        <form class="form-searchbox" autocomplete="off" methjo="post" action="recherche/">
-            <input class="form-control" type="text" placeholder="Rechercher..." name="tx_indexedsearch[sword]" required />
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-           </span>
-        </form>
-    </div>
-</div>
+    # "Menu of subpages to these pages (with abstract)"
+    #46 < .4
+    4 {
+        stdWrap >
+        wrap = <div class="row">|</div>
+        1.NO {
+            after >
+            linkWrap >
+            
+            wrapItemAndSub >
+
+            stdWrap.outerWrap.cObject = COA
+            stdWrap.outerWrap.cObject {
+
+                10 = FILES
+                10 {
+                    # Get the images related to the current page
+                    references {
+                        table = pages
+                        fieldName = media
+                        file.treatIdAsReference = 1
+                    }
+                    # Render each image and wrap it as appropriate
+                    renderObj = TEXT
+                    renderObj {
+                        typolink {
+                            parameter.data = file:current:publicUrl
+                            forceAbsoluteUrl = 1
+                            returnLast = url
+                        }
+                        wrap = |,
+                    }
+                    stdWrap {
+                        # Take only the first image if several are defined
+                        listNum = 0
+                        # Use default image if none is available
+                        ifEmpty.cObject = TEXT
+                        ifEmpty.cObject.typolink {
+                            parameter = path_to_images/logo.png
+                            forceAbsoluteUrl = 1
+                            returnLast = url
+                        }
+                        wrap = <div class="col-sm-6 col-md-4"><div class="thumbnail"><div class="thumb xs-hidden"><img src="|" title="image" width="250" height="346"/><span></span></div><div class="caption"><h2>
+                    }
+                }
+            }
+            stdWrap.wrap  = |</h2><div class="clearfix"></div></div></div></div>
+        }
+        ATagTitle.field = title // subtitle
+    }
+}
+######################
+#### LIENS FOOTER ####
+######################
+lib.footer = HMENU
+lib.footer {
+  special= directory
+  special.value= {$page.footer}
+  includeNotInMenu = 1
+  1 = TMENU
+  1 {
+    wrap=<ul class="sm-bloc-center">|</ul>
+    NO.allWrap= <li>|</li>
+  }
+}
+
+###################
+#### SEARCHBOX ####
+###################
+lib.searchbox = TEXT
+lib.searchbox.value (
+    <form method="post" action="recherche/">
+        <input class="sb-search-input" placeholder="Entrez votre recherche..." type="text" value="" name="keywords" id="search"></input>
+        <input class="sb-search-submit" src="http://37.59.243.236/fileadmin/user_upload/recherche.png" alt="Rechercher" type="image" alt="Rechercher"></input>
+        <span class="sb-icon-search"></span>
+    </form>
 )

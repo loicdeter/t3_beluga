@@ -4,4 +4,16 @@ page {
 		templateRootPath = EXT:t3_beluga/Resources/Private/Templates/Page/
 		partialRootPath = EXT:t3_beluga/Resources/Private/Partials/Page/
 	}
+    logo {
+        file = fileadmin/user_upload/BackgroundCarousel.png
+        height = 50%
+        width = 50%
+    }
+}
+
+config{
+    compressCss = 0
+    concatenateCss = 0
+    compressJs = 0
+    concatenateJs = 0
 }
