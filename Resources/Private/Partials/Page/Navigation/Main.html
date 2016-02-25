@@ -1,0 +1,34 @@
+<header id="header" role="banner" style='background-image: url(http://37.59.243.236/fileadmin/user_upload/simple-caption.png);'>
+    <div class="top-blocks">
+        <div class="left-block">
+            <f:if condition="{f:cObject(typoscriptObjectPath:'lib.navigation.main')}">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </f:if>
+        </div>
+        <div id="recherche" class="xs-hidden">
+            <div id="sb-search" class="sb-search">
+                <form method="post" action="/recherche/post">
+                    <input class="sb-search-input" placeholder="Entrez votre recherche..." type="text" value="" name="keywords" id="search">
+                    <input class="sb-search-submit fa fa-search" type="image" alt="Rechercher">
+                    <span class="fa fa-search"></span>
+                </form>
+            </div>
+        </div>
+    </div>
+    <h1>
+        <f:link.page pageUid="{rootPage}">{siteTitle}</f:link.page>
+    </h1>
+</header>			
+<div class="selector">
+    <div class="overlay overlay-scale">
+        <button type="button" class="overlay-close">Fermer le menu</button>
+        <nav id="main-nav">
+            <f:cObject typoscriptObjectPath="lib.navigation.main"/>
+        </nav>
+    </div>
+</div>
