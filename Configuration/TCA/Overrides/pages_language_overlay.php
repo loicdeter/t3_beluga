@@ -36,14 +36,6 @@ $temporaryColumns = array (
             'default' => 'white',
         ),
     ),
-    't3_beluga_image' => array(
-        'label' => 'LLL:EXT:t3_beluga/Resources/Private/Language/Backend.xlf:pages.image',
-        'exclude' => 1,
-        'config' => array(
-            'type' => 'check',
-            'default' => '0'
-        ),
-    ),
 );
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
     'pages',
@@ -52,7 +44,7 @@ $temporaryColumns = array (
 );
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
     'pages',
-    '--div--;Beluga Menu, t3_beluga_type, t3_beluga_color, t3_beluga_image',
+    '--div--;Beluga Menu, t3_beluga_type, t3_beluga_color',
     '',
     'after:own_marker_select'
 );
